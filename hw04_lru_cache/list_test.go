@@ -15,6 +15,51 @@ func TestList(t *testing.T) {
 		require.Nil(t, l.Back())
 	})
 
+	t.Run("front and back are same and move to front", func(t *testing.T) {
+		l := NewList()
+
+		item := l.PushBack(10)
+		l.MoveToFront(item)
+		require.Equal(t, 1, l.Len())
+	})
+
+	t.Run("remove the only one front", func(t *testing.T) {
+		l := NewList()
+
+		item := l.PushFront(10)
+		l.Remove(item)
+		require.Equal(t, 0, l.Len())
+	})
+
+	t.Run("remove the only one back", func(t *testing.T) {
+		l := NewList()
+
+		item := l.PushBack(10)
+		l.Remove(item)
+		require.Equal(t, 0, l.Len())
+	})
+
+	t.Run("front and back are nil and move to front", func(t *testing.T) {
+		l := NewList()
+
+		item := &ListItem{9, nil, nil}
+		l.MoveToFront(item)
+		require.Equal(t, 1, l.Len())
+	})
+
+	t.Run("move to front from middle", func(t *testing.T) {
+		l := NewList()
+
+		l.PushBack(10) // [10]
+		l.PushBack(20) // [10, 20]
+		l.PushBack(30) // [10, 20, 30]
+		require.Equal(t, 3, l.Len())
+
+		middle := l.Front().Next // 20
+		l.MoveToFront(middle)
+		require.Equal(t, middle, l.Front())
+	})
+
 	t.Run("complex", func(t *testing.T) {
 		l := NewList()
 

@@ -1,8 +1,13 @@
-module github.com/fixme_my_friend/hw04_lru_cache
+module github.com/timersha/golang-tests/hw04_lru_cache
 
-go 1.22
+go 1.22.0
 
-require github.com/stretchr/testify v1.7.0
+toolchain go1.22.10
+
+require (
+	github.com/stretchr/testify v1.7.0
+	golang.org/x/exp v0.0.0-20250103183323-7d7fa50e5329
+)
 
 require (
 	github.com/davecgh/go-spew v1.1.1 // indirect

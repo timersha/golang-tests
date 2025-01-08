@@ -14,3 +14,6 @@ linters-settings:
         allow:
           - $gostd
           - github.com/stretchr/testify
+linters:
+ disable:
+   - gosimple
